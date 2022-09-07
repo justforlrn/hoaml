@@ -6,13 +6,12 @@ jobs:
     PullAndRunDockerInServer:
       runs-on: ubuntu-latest
       steps:
-        - name: ls -a via ssh
-          uses: fifsky/ssh-action@master
-          with:
-            command: |
-              git checkout dev
-            host: ${{ secrets.SSH_HOST }}
-            user: ${{ secrets.SSH_USER }}
-            pass: ${{ secrets.SSH_PASSWORD}}
-            args: "-tt"
-            
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }} #hostname of server
+          username: ${{ secrets.SSH_USER }} #username login to server
+          password: ${{ secrets.SSH_PASSWORD }} #password login to server
+          port: 22 #port of server - often port is 22
+          script: | # run with multiple script
+            ls
