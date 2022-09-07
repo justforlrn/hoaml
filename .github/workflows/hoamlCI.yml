@@ -7,10 +7,12 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: ls -a via ssh
-          uses: garygrossgarten/github-action-ssh@release
+          uses: fifsky/ssh-action@master
           with:
             command: |
               git checkout dev
             host: ${{ secrets.SSH_HOST }}
-            username: ${{ secrets.SSH_USER }}
-            password : ${{ secrets.SSH_PASSWORD}}
+            user: ${{ secrets.SSH_USER }}
+            pass: ${{ secrets.SSH_PASSWORD}}
+            args: "-tt"
+            
