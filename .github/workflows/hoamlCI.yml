@@ -27,7 +27,8 @@ jobs:
           tags: justforlrn/hoaml:lastest
       - name: Verify
         run: echo ${{ steps.docker_build.outputs.digest }}
-    PullAndRunDockerInServer:
+    PullAndRunDockerInServer:      
+      needs: Docker
       runs-on: ubuntu-latest
       steps:
       - name: executing remote ssh commands using password
