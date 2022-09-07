@@ -50,7 +50,7 @@ public class ManagermentHttpApiHostModule : AbpModule
         ConfigureAuthentication(context, configuration);
         ConfigureLocalization();
         ConfigureCache(configuration);
-        ConfigureVirtualFileSystem(context);
+//         ConfigureVirtualFileSystem(context);
         ConfigureDataProtection(context, configuration, hostingEnvironment);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
@@ -61,29 +61,29 @@ public class ManagermentHttpApiHostModule : AbpModule
         Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "Managerment:"; });
     }
 
-    private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
-    {
-        var hostingEnvironment = context.Services.GetHostingEnvironment();
+//     private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
+//     {
+//         var hostingEnvironment = context.Services.GetHostingEnvironment();
 
-        if (hostingEnvironment.IsDevelopment())
-        {
-            Configure<AbpVirtualFileSystemOptions>(options =>
-            {
-                options.FileSets.ReplaceEmbeddedByPhysical<ManagermentDomainSharedModule>(
-                    Path.Combine(hostingEnvironment.ContentRootPath,
-                        $"..{Path.DirectorySeparatorChar}Managerment.Domain.Shared"));
-                options.FileSets.ReplaceEmbeddedByPhysical<ManagermentDomainModule>(
-                    Path.Combine(hostingEnvironment.ContentRootPath,
-                        $"..{Path.DirectorySeparatorChar}Managerment.Domain"));
-                options.FileSets.ReplaceEmbeddedByPhysical<ManagermentApplicationContractsModule>(
-                    Path.Combine(hostingEnvironment.ContentRootPath,
-                        $"..{Path.DirectorySeparatorChar}Managerment.Application.Contracts"));
-                options.FileSets.ReplaceEmbeddedByPhysical<ManagermentApplicationModule>(
-                    Path.Combine(hostingEnvironment.ContentRootPath,
-                        $"..{Path.DirectorySeparatorChar}Managerment.Application"));
-            });
-        }
-    }
+//         if (hostingEnvironment.IsDevelopment())
+//         {
+//             Configure<AbpVirtualFileSystemOptions>(options =>
+//             {
+//                 options.FileSets.ReplaceEmbeddedByPhysical<ManagermentDomainSharedModule>(
+//                     Path.Combine(hostingEnvironment.ContentRootPath,
+//                         $"..{Path.DirectorySeparatorChar}Managerment.Domain.Shared"));
+//                 options.FileSets.ReplaceEmbeddedByPhysical<ManagermentDomainModule>(
+//                     Path.Combine(hostingEnvironment.ContentRootPath,
+//                         $"..{Path.DirectorySeparatorChar}Managerment.Domain"));
+//                 options.FileSets.ReplaceEmbeddedByPhysical<ManagermentApplicationContractsModule>(
+//                     Path.Combine(hostingEnvironment.ContentRootPath,
+//                         $"..{Path.DirectorySeparatorChar}Managerment.Application.Contracts"));
+//                 options.FileSets.ReplaceEmbeddedByPhysical<ManagermentApplicationModule>(
+//                     Path.Combine(hostingEnvironment.ContentRootPath,
+//                         $"..{Path.DirectorySeparatorChar}Managerment.Application"));
+//             });
+//         }
+//     }
 
     private void ConfigureConventionalControllers()
     {
