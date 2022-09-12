@@ -229,6 +229,7 @@ namespace Managerment.OrderRepairs
                         };
             
             int pageCout = !query.Any() ? 0 : query.Count() / perPage + 1;
+
             ListProcessRepairDto listProcessRepairDto = new()
             {
                 Checking_count = query.Count(x => x.Process_repair_type == EProcessRepairType.Checking),
@@ -236,7 +237,7 @@ namespace Managerment.OrderRepairs
                 Fixed_count = query.Count(x => x.Process_repair_type == EProcessRepairType.Fixed),
                 Quote_count = query.Count(x => x.Process_repair_type == EProcessRepairType.Quote),
                 Return_customer = query.Count(x => x.Process_repair_type == EProcessRepairType.Return_customer),
-                Data_process_repair = query.ToList()
+                Data_process_repair = query.Skip((page - 1) * perPage).Take(perPage).ToList()
             };
             return new ReponseDataDto<ListProcessRepairDto>()
             {
