@@ -50,8 +50,8 @@ public class ManagermentHttpApiHostModule : AbpModule
         ConfigureAuthentication(context, configuration);
         ConfigureLocalization();
         ConfigureCache(configuration);
-        ConfigureVirtualFileSystem(context);
-        ConfigureDataProtection(context, configuration, hostingEnvironment);
+        //ConfigureVirtualFileSystem(context);
+        //ConfigureDataProtection(context, configuration, hostingEnvironment);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
     }
