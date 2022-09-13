@@ -6,7 +6,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>Managerment</RootNamespace>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>Managerment.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
