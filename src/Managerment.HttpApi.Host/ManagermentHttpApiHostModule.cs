@@ -108,8 +108,8 @@ public class ManagermentHttpApiHostModule : AbpModule
     {
         context.Services.AddSwaggerGen(options =>
         {
-            var filePath = Path.Combine(System.AppContext.BaseDirectory, "managerment.xml");
-            options.IncludeXmlComments(filePath);
+            //var filePath = Path.Combine(System.AppContext.BaseDirectory, "managerment.xml");
+            //options.IncludeXmlComments(filePath);
             //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, ${Assembly.GetExecutingAssembly().GetName().Name}.xml"));
             var apiSecurity = new OpenApiSecurityRequirement{
                           {
